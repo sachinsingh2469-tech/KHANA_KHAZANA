@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Checkout</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        checkAuth();
+    </script>
+
+
+<section class="checkout-page">
+    <h2>Checkout</h2>
+
+    <form onsubmit="placeOrder(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <textarea id="address" placeholder="Delivery Address" required></textarea>
+
+        <button class="btn">Place Order</button>
+    </form>
+</section>
+<div class="payment-modal" id="paymentModal">
+  <div class="payment-box">
+
+    <h3>Select Payment Method</h3>
+
+    <div class="payment-option" onclick="showUPI()">
+      💳 UPI
+    </div>
+
+    <div class="payment-option" onclick="showBanking()">
+      🏦 Net Banking
+    </div>
+
+    <div class="payment-option" onclick="selectPayment('Cash on Delivery')">
+      💵 Cash on Delivery
+    </div>
+
+    <!-- UPI DETAILS -->
+    <div class="payment-details" id="upiDetails">
+      <input type="text" id="upiId" placeholder="Enter UPI ID (example@upi)">
+      <button class="btn" onclick="processPayment('UPI')">
+        Pay Now
+      </button>
+    </div>
+
+    <!-- BANK DETAILS -->
+    <div class="payment-details" id="bankDetails">
+      <select id="bankName">
+        <option>Select Bank</option>
+        <option>State Bank of India</option>
+        <option>HDFC Bank</option>
+        <option>ICICI Bank</option>
+        <option>Axis Bank</option>
+      </select>
+      <button class="btn" onclick="processPayment('Net Banking')">
+        Proceed to Pay
+      </button>
+    </div>
+
+    <!-- LOADER -->
+    <div class="loader" id="paymentLoader" style="display:none;"></div>
+
+    <!-- SUCCESS -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-tick">✔</div>
+      <h2>Payment Successful!</h2>
+      <p>Your order is being prepared 👨‍🍳</p>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

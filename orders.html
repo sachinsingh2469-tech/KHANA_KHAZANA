@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order History - Khana Khazana</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Khana Khazana</div>
+    <button class="btn" onclick="logout()">Logout</button>
+</nav>
+
+<section class="orders-page" style="padding:40px;">
+    <h2>Your Orders</h2>
+    <div id="orders-container"></div>
+</section>
+
+<script src="script.js"></script>
+
+<script>
+checkAuth();   // Protect page
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+let container = document.getElementById("orders-container");
+
+/* 🔄 AUTO UPDATE STATUS EACH TIME PAGE OPENS */
+orders.forEach(order => {
+    if(order.status === "Preparing") {
+        order.status = "Out for Delivery";
+    } 
+    else if(order.status === "Out for Delivery") {
+        order.status = "Delivered";
+    }
+});
+
+localStorage.setItem("orders", JSON.stringify(orders));
+
+/* 🧾 DISPLAY ORDERS */
+if(orders.length === 0){
+    container.innerHTML = "<p>No orders yet.</p>";
+} else {
+
+orders.reverse().forEach(order => {
+
+let progressWidth =
+    order.status === "Preparing" ? "30%" :
+    order.status === "Out for Delivery" ? "70%" :
+    "100%";
+
+container.innerHTML += `
+<div class="card" style="margin:20px 0; padding:20px;">
+
+    <p><strong>Date:</strong> ${order.date}</p>
+    <p><strong>Status:</strong> ${order.status}</p>
+    <p><strong>Payment:</strong> ${order.paymentMethod}</p>
+
+    <p><strong>Items:</strong><br>
+    ${order.items.map(i => i.name + " x" + i.qty).join("<br>")}
+    </p>
+
+    <!-- DELIVERY TRACK BAR -->
+    <div class="delivery-track">
+        <div class="delivery-progress" style="width:${progressWidth}"></div>
+    </div>
+
+    <br>
+    <button class="btn" onclick="downloadInvoice()">
+        Download Invoice
+    </button>
+
+</div>
+`;
+});
+}
+</script>
+
+</body>
+</html>

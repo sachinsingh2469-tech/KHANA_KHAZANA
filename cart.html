@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Cart</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Khana Khazana</div>
+    <button onclick="logout()">Logout</button>
+
+</nav>
+
+<section class="cart-page">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <h3>Total: ₹<span id="total">0</span></h3>
+
+    <input type="text" id="coupon" placeholder="Enter Coupon">
+    <button onclick="applyCoupon()">Apply</button>
+    <p id="discount-msg"></p>
+
+    <button class="btn" onclick="window.location.href='checkout.html'">
+        Proceed to Checkout
+    </button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

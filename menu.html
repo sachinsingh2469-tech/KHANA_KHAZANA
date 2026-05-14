@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu - Khana Khazana</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Khana Khazana</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="orders.html">Order History</a></li>
+    </ul>
+    <button onclick="logout()">Logout</button>
+
+    <div class="cart-icon" onclick="window.location.href='cart.html'">
+        🛒 <span id="cart-count">0</span>
+    </div>
+</nav>
+
+<section class="menu-page">
+    <h2>Our Premium Menu</h2>
+    <div id="menu-container"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

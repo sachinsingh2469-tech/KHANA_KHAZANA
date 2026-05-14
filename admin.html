@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Admin Panel</h2>
+<div id="adminOrders"></div>
+
+<script src="script.js"></script>
+<script>
+let orders=JSON.parse(localStorage.getItem("orders"))||[];
+let container=document.getElementById("adminOrders");
+
+orders.forEach(order=>{
+container.innerHTML+=`
+<div class="card">
+<p>${order.date}</p>
+<p>Status: ${order.status}</p>
+<button onclick="forceDeliver()">Mark Delivered</button>
+</div>`;
+});
+</script>
+</body>
+</html>

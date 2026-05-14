@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khana Khazana</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Khana Khazana</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="orders.html">Order History</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button onclick="logout()">Logout</button>
+
+    <div class="cart-icon" onclick="window.location.href='cart.html'">
+        🛒 <span id="cart-count">0</span>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Khana Khazana</h1>
+        <p>Delicious Food Delivered To Your Door</p>
+        <button class="btn" onclick="window.location.href='menu.html'">Order Now</button>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
